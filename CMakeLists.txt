@@ -35,8 +35,8 @@ target_link_libraries (tests ${INTERN_LIB_NAME})
 add_test (tests tests)
 add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} --verbose DEPENDS tests)
 
-add_executable (benchmark benchmark.c)
-target_link_libraries (benchmark ${INTERN_LIB_NAME})
+#add_executable (benchmark benchmark.c)
+#target_link_libraries (benchmark ${INTERN_LIB_NAME})
 
 set (CMAKE_C_FLAGS "-std=c99 -Wall -pedantic -g -D_GNU_SOURCE")
 set (CMAKE_C_FLAGS_RELEASE "-O3 -march=native")
