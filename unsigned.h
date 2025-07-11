@@ -1,3 +1,4 @@
+#include <stdint.h>
 static const char digit_pairs[201] = {
     "00010203040506070809"
     "10111213141516171819"

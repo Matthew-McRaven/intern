@@ -2,8 +2,8 @@
 #include <string.h>
 #include <stdint.h>
 
-#include "config.h"
 #include "block.h"
+#include "intern_config.h"
 #include "page.h"
 
 struct block *block_new(size_t page_size) {

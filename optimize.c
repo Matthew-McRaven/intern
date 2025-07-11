@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "config.h"
+#include "intern_config.h"
 #include "optimize.h"
 
 #ifdef INLINE_UNSIGNED

@@ -2,7 +2,7 @@
 #include <string.h>
 #include <limits.h>
 
-#include "config.h"
+#include "intern_config.h"
 #include "strings.h"
 #include "tree.h"
 
@@ -69,25 +69,25 @@ struct strings {
 #endif
 };
 
-struct strings *strings_new() {
-    struct strings *strings = malloc(sizeof(*strings));
-    if (!strings) {
-        return NULL;
-    }
+struct strings *strings_new(void) {
+  struct strings *strings = malloc(sizeof(*strings));
+  if (!strings) {
+    return NULL;
+  }
 
-    strings->hashes = block_new(PAGE_SIZE);
-    strings->strings = block_new(PAGE_SIZE);
-    strings->index = block_new(PAGE_SIZE);
-    if (!strings->hashes || !strings->strings || !strings->index) {
-        goto error;
-    }
+  strings->hashes = block_new(PAGE_SIZE);
+  strings->strings = block_new(PAGE_SIZE);
+  strings->index = block_new(PAGE_SIZE);
+  if (!strings->hashes || !strings->strings || !strings->index) {
+    goto error;
+  }
 
-    tree_new(&strings->hash_map);
+  tree_new(&strings->hash_map);
 
-    strings->total = 0;
-    strings->hash_seed = 5381;
+  strings->total = 0;
+  strings->hash_seed = 5381;
 
-    return strings;
+  return strings;
 
 error:
     if (strings->hashes) {
